@@ -17,12 +17,23 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="./">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="?login=true">Login</a>
+                    <?php 
+                        if($_SESSION['user']['username']){?>
+                            <li class="nav-item">
+                        <a class="nav-link" href="?login=true">Logout</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="?signup=true">SignUp</a>
-                    </li>
+                    <?php    }
+                    ?>
+                    <?php 
+                        if(!$_SESSION['user']['username']){?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="?login=true">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="?signup=true">SignUp</a>
+                            </li>
+                    <?php    }
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link">Category</a>
                     </li>
@@ -30,10 +41,10 @@
                         <a class="nav-link">Latest Questions</a>
                     </li>
                 </ul>
-                <!-- <form class="d-flex" role="search">
+                <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
-                </form> -->
+                </form>
             </div>
         </div>
     </nav>
