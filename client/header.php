@@ -18,14 +18,14 @@
                         <a class="nav-link active" aria-current="page" href="./">Home</a>
                     </li>
                     <?php 
-                        if($_SESSION['user']['username']){?>
+                        if(isset($_SESSION['user']['username'])){?>
                             <li class="nav-item">
-                        <a class="nav-link" href="?login=true">Logout</a>
+                        <a class="nav-link" href="./server/request.php?logout=true">Logout</a>
                     </li>
                     <?php    }
                     ?>
                     <?php 
-                        if(!$_SESSION['user']['username']){?>
+                        if(!isset($_SESSION['user']['username'])){?>
                             <li class="nav-item">
                                 <a class="nav-link" href="?login=true">Login</a>
                             </li>

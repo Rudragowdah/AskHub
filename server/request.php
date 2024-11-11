@@ -4,10 +4,10 @@
     include("../common/db.php");
     
     if(isset($_POST["signup"])) {
-        echo "The Username is = {$_POST["username"]} <br>";
-        echo "The Password is = {$_POST["password"]} <br>";
-        echo "The Email is = {$_POST["email"]} <br>";
-        echo "The address is = {$_POST["address"]} <br>";
+        // echo "The Username is = {$_POST["username"]} <br>";
+        // echo "The Password is = {$_POST["password"]} <br>";
+        // echo "The Email is = {$_POST["email"]} <br>";
+        // echo "The address is = {$_POST["address"]} <br>";
 
         $username = $_POST["username"];
         $password = $_POST["password"];
@@ -20,12 +20,39 @@
         $result = $user->execute();
 
         if($result) {
-            // echo "New User Registered...";
+            echo "New User Registered...";
+            // echo $username . "<br>";
+            // echo $password;
             $_SESSION["user"] = ["username"=>$username,"email"=>$email];
             header('Location: /AskHub');
         }
         else {
             echo "New User Not Registered...";
         }
+    }
+    elseif(isset($_POST["login"])) {
+        // print_r($_POST);
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $username = "";
+        $query = "select * from `users` where email = '$email' and password = '$password'";
+        $result = $conn->query($query);
+        // echo $result->num_rows;
+        if( $result->num_rows==1) {
+            foreach($result as $row) {
+                // echo $row['username'];
+                $username = $row['username'];
+            }
+            $_SESSION["user"] = ["username"=>$username,"email"=>$email];
+            header('Location: /AskHub');
+        }
+        else {
+            echo "Account Not Found...";
+        }
+
+    }
+    elseif(isset($_GET["logout"])) {
+        session_unset();
+        header("Location: /AskHub");
     }
 ?>

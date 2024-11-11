@@ -9,11 +9,12 @@
 <body>
     <?php 
     session_start();
+    // $_SESSION["user"] = ["username"=>""];
     include('./client/header.php'); 
-    if(isset($_GET["signup"])) {
+    if(isset($_GET["signup"]) && !isset($_SESSION['user']['username'])) {
         include('./client/signup.php');
     }
-    elseif(isset($_GET['login'])) {
+    elseif(isset($_GET['login']) && !isset($_SESSION['user']['username'])) {
         include("./client/login.php");
     }
     else {
