@@ -23,7 +23,7 @@
             echo "New User Registered...";
             // echo $username . "<br>";
             // echo $password;
-            $_SESSION["user"] = ["username"=>$username,"email"=>$email];
+            $_SESSION["user"] = ["username"=>$username,"email"=>$email,"user_id"=>$user->insert_id];
             header('Location: /AskHub');
         }
         else {
@@ -35,6 +35,7 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
         $username = "";
+        $user_id = 0;
         $query = "select * from `users` where email = '$email' and password = '$password'";
         $result = $conn->query($query);
         // echo $result->num_rows;
@@ -42,8 +43,9 @@
             foreach($result as $row) {
                 // echo $row['username'];
                 $username = $row['username'];
+                $user_id = $row['id'];
             }
-            $_SESSION["user"] = ["username"=>$username,"email"=>$email];
+            $_SESSION["user"] = ["username"=>$username,"email"=>$email,"user_id"=>$user_id];
             header('Location: /AskHub');
         }
         else {
@@ -54,5 +56,24 @@
     elseif(isset($_GET["logout"])) {
         session_unset();
         header("Location: /AskHub");
+    }
+    elseif(isset($_POST['ask'])) {
+        // print_r($_POST);
+        // print_r($_SESSION);
+        $title = $_POST["title"];
+        $description = $_POST["desc"];
+        $category_id = $_POST["category"];
+        $user_id = $_SESSION["user"]["user_id"];
+
+        $user = $conn->prepare("Insert into questions (`id`,`title`,`description`,`category_id`,`user_id`)
+            values (NULL,'$title','$description','$category_id','$user_id');
+        ");
+        $result = $user->execute();
+        if($result) {
+            header('Location: /AskHub');
+        }
+        else {
+            echo "Error In Storing Question in the Database";
+        }
     }
 ?>

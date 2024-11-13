@@ -22,6 +22,9 @@
                             <li class="nav-item">
                         <a class="nav-link" href="./server/request.php?logout=true">Logout</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="?ask=true">Ask A Question</a>
+                    </li>
                     <?php    }
                     ?>
                     <?php 
