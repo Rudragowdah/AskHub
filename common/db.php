@@ -13,7 +13,7 @@
     }
 
     if($conn) {
-        echo "You are connected <br>";
+        // echo "You are connected <br>";
     }
 
 ?>

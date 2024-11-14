@@ -5,3 +5,18 @@
 .heading {
     text-align: center;
 }
+
+.question-list {
+    border: 1px solid black;
+    padding: 5px;
+    margin: 10px;
+}
+.question-list h5 {
+    margin: 0;
+    padding: 0;
+}
+
+.question-list a {
+    text-decoration: none;
+
+}
