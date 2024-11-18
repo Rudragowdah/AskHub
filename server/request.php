@@ -76,4 +76,21 @@
             echo "Error In Storing Question in the Database";
         }
     }
+    elseif(isset($_POST['answer'])) {
+        // print_r($_POST);
+        $answer = $_POST["answer"];
+        $question_id = $_POST["question_id"];
+        $user_id = $_SESSION["user"]["user_id"];
+
+        $user = $conn->prepare("Insert into answers (`id`,`answer`,`question_id`,`user_id`)
+            values (NULL,'$answer','$question_id','$user_id');
+        ");
+        $result = $user->execute();
+        if($result) {
+            header("Location: /AskHub/?q-id=$question_id");
+        }
+        else {
+            echo "Error In Storing Answer in the Database";
+        }
+    }
 ?>
