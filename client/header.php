@@ -7,8 +7,8 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img height="30" src="./public/logo.png" /></a>
+        <div class="container">
+            <a class="navbar-brand" href="./"><img height="30" src="./public/logo.png" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -20,7 +20,7 @@
                     <?php 
                         if(isset($_SESSION['user']['username'])){?>
                             <li class="nav-item">
-                        <a class="nav-link" href="./server/request.php?logout=true">Logout</a>
+                        <a class="nav-link" href="./server/request.php?logout=true">Logout (<?php echo ucfirst($_SESSION['user']['username']) ?>)</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="?ask=true">Ask A Question</a>
@@ -40,9 +40,9 @@
                             </li>
                     <?php    }
                     ?>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link">Category</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="?latest=true">Latest Questions</a>
                     </li>
