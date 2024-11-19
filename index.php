@@ -24,7 +24,10 @@
     elseif(isset($_GET['q-id'])){
         $qid = $_GET['q-id'];
         include("./client/question-details.php");
-
+    }
+    elseif(isset($_GET['c_id'])){
+        $c_id = $_GET['c_id'];
+        include("./client/questions.php");
     }
     else {
         include("./client/questions.php");
