@@ -26,7 +26,7 @@
             $categoryquery = "select category from category where id=$cid";
             $categoryresult = $conn->query($categoryquery);
             $categoryrow = $categoryresult->fetch_assoc();
-            echo "<h1>".$categoryrow['category']."</h1>";
+            echo "<h1>".ucfirst($categoryrow['category'])."</h1>";
 
             $query = "select * from questions where category_id=$cid and id!=$qid";
             $result = $conn->query($query);

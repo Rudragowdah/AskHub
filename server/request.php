@@ -93,4 +93,15 @@
             echo "Error In Storing Answer in the Database";
         }
     }
+    elseif(isset($_GET['delete'])) {
+        $qid = $_GET['delete'];
+        $query = $conn->prepare("delete from questions where id=$qid");
+        $result = $query->execute();
+        if($result) {
+            header("Location: /askhub");
+        }
+        else {
+            echo "Failed to Delete the Question";
+        }
+    }
 ?>
