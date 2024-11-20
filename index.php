@@ -10,6 +10,7 @@
     <?php 
     session_start();
     // $_SESSION["user"] = ["username"=>""];
+    // echo "<script>console.log('Nagaraj');</script>";
     include('./client/header.php'); 
     if(isset($_GET["signup"]) && !isset($_SESSION['user']['username'])) {
         include('./client/signup.php');

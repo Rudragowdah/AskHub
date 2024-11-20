@@ -1,6 +1,10 @@
 .margin-bottom-15 {
     margin-bottom: 15px !important;
 }
+.sticky-navbar {
+    position: sticky;
+    top: 0;
+}
 
 .heading {
     text-align: center;
